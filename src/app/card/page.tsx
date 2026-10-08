@@ -15,7 +15,6 @@ import {
   Copy,
   Check,
   Sparkles,
-  Zap,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { profileData } from "@/data/profile";
@@ -35,6 +34,18 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
     <rect width="4" height="12" x="2" y="9" />
     <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
+// SVG Icon for TikTok
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.46 2.84 1.25-.01 2.45-.72 2.97-1.84.27-.53.37-1.13.36-1.72.02-4.95-.01-9.91.01-14.86z" />
   </svg>
 );
 
@@ -213,10 +224,10 @@ export default function BusinessCardPage() {
           {/* ===================================================================== */}
           {/* LEFT SIDE (58%): Identity, Hierarchy, Academic, Bio & 2-Row Stack     */}
           {/* ===================================================================== */}
-          <div className="relative z-10 flex flex-col justify-between h-full w-[58%] pr-6 sm:pr-8 text-left">
+          <div className="relative z-10 flex flex-col justify-between h-full w-[58%] pr-6 sm:pr-8 text-left [zoom:1.08]">
             {/* Header: Prominent Avatar (w-24/w-28) + Two-line Full Name + Handle Badge */}
             <div className="flex items-center gap-4 sm:gap-5">
-              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden p-[2px] bg-gradient-to-b from-zinc-200 to-zinc-100 dark:from-zinc-700 dark:to-zinc-800 shadow-md border-2 border-zinc-200/80 dark:border-zinc-700/80 shrink-0">
+              <div className="relative w-24 h-24 sm:w-34 sm:h-34 rounded-2xl overflow-hidden p-[2px] bg-gradient-to-b from-zinc-200 to-zinc-100 dark:from-zinc-700 dark:to-zinc-800 shadow-md border-2 border-zinc-200/80 dark:border-zinc-700/80 shrink-0">
                 <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-zinc-100 dark:bg-zinc-800">
                   <Image
                     src={profileData.avatarUrl}
@@ -230,7 +241,7 @@ export default function BusinessCardPage() {
               </div>
 
               <div className="space-y-1">
-                <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
+                <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
                   <span className="block">Oscar Mateo</span>
                   <span className="block">Elías López</span>
                 </h1>
@@ -248,14 +259,14 @@ export default function BusinessCardPage() {
             </div>
 
             {/* Featured Role */}
-            <div className="pt-2">
+            <div className="pt-5">
               <p className="text-base sm:text-lg font-bold text-[var(--ola-blue)] tracking-tight">
                 {profileData.title}
               </p>
             </div>
 
             {/* Academic Degree in 2 Clean Lines */}
-            <div className="space-y-0.5 text-xs sm:text-[13px] leading-snug py-0.5">
+            <div className="space-y-0.5 text-xs sm:text-[13px] leading-snug py-0.5 mt-2">
               <p className="font-semibold text-zinc-800 dark:text-zinc-200">
                 Técnico en Ingeniería en Computación
               </p>
@@ -265,8 +276,10 @@ export default function BusinessCardPage() {
             </div>
 
             {/* LinkedIn-Inspired Concise Bio */}
-            <p className="text-xs sm:text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-sm mt-1">
-              Full-Stack Developer &amp; Presidente ASECC (UDB). Fundador de OlaLabs. Enfocado en software escalable, innovación y divulgación tech.
+            <p className="text-xs sm:text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-sm mt-3">
+              Fundador de OlaLabs.<br></br>
+              Full-Stack Developer &amp; Presidente ASECC (UDB). <br></br>
+              Enfocado en software escalable, innovación y divulgación tech.
             </p>
 
             {/* Technical Skills: Strictly 2 Balanced Rows */}
@@ -359,7 +372,7 @@ export default function BusinessCardPage() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-sm font-medium text-zinc-700 dark:text-zinc-200 hover:text-[var(--ola-blue)] transition-colors truncate"
               >
-                <Zap className="w-[18px] h-[18px] text-amber-500 shrink-0" />
+                <TikTokIcon className="w-[18px] h-[18px] text-zinc-900 dark:text-white shrink-0" />
                 <span className="font-mono font-semibold truncate">@byelias_</span>
               </a>
             </div>
