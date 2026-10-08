@@ -9,9 +9,10 @@ export function generateAndDownloadVCard() {
     `NICKNAME:${profileData.name}`,
     `TITLE:${profileData.title}`,
     `ORG:OLabs`,
-    `EMAIL;TYPE=INTERNET,WORK:${profileData.email}`,
+    `EMAIL;TYPE=INTERNET,WORK;TYPE=PREF:${profileData.emails[0].email}`,
+    `EMAIL;TYPE=INTERNET,HOME:${profileData.emails[1].email}`,
     `URL:${profileData.domain}`,
-    `NOTE:${profileData.tagline}`,
+    `NOTE:${profileData.taglineEs}`,
     "END:VCARD",
   ].join("\r\n");
 

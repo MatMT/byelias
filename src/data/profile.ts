@@ -6,17 +6,24 @@ export interface ProfileLink {
   featured?: boolean;
 }
 
+export interface EmailContactItem {
+  id: "work" | "personal" | "icloud";
+  typeKey: "workLabel" | "personalLabel" | "icloudLabel";
+  email: string;
+  isPrimary?: boolean;
+}
+
 export interface ProfileData {
   name: string;
   fullName: string;
   title: string;
-  tagline: string;
-  availability: string;
-  email: string;
+  taglineEs: string;
+  taglineEn: string;
   domain: string;
   avatarUrl: string;
   github: string;
   links: ProfileLink[];
+  emails: EmailContactItem[];
   skills: string[];
 }
 
@@ -24,12 +31,29 @@ export const profileData: ProfileData = {
   name: "Elías",
   fullName: "Oscar Mateo Elías",
   title: "Lead Software Developer",
-  tagline: "Computer Science Engineer | Building scalable software & modern web experiences",
-  availability: "Available for projects",
-  email: "oscarmateoelias@gmail.com",
+  taglineEs: "Computer Science Engineer | Building scalable software & modern web experiences",
+  taglineEn: "Computer Science Engineer | Building scalable software & modern web experiences",
   domain: "https://olabsv.com",
   avatarUrl: "https://github.com/MatMT.png",
   github: "https://github.com/MatMT",
+  emails: [
+    {
+      id: "work",
+      typeKey: "workLabel",
+      email: "oelias@olabsv.com",
+      isPrimary: true,
+    },
+    {
+      id: "personal",
+      typeKey: "personalLabel",
+      email: "oscarmateoelias@gmail.com",
+    },
+    {
+      id: "icloud",
+      typeKey: "icloudLabel",
+      email: "oscarmateoelias@icloud.com",
+    },
+  ],
   links: [
     {
       id: "website",
@@ -56,20 +80,14 @@ export const profileData: ProfileData = {
       subtitle: "@byelias._ • Updates & Builds",
       url: "https://instagram.com/byelias._",
     },
-    {
-      id: "contact",
-      title: "Email Contact",
-      subtitle: "oscarmateoelias@gmail.com",
-      url: "mailto:oscarmateoelias@gmail.com",
-    },
   ],
   skills: [
     "TypeScript",
-    "Next.js / React",
+    "React / Next.js",
     "Systems Architecture",
     "Design Engineering",
     "Node.js",
     "Docker",
-    "High Craft UI",
+    "Apple HIG",
   ],
 };

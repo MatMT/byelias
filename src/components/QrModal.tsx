@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import QRCode from "qrcode";
 import { X, Copy, Check, Download } from "lucide-react";
 import { profileData } from "@/data/profile";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface QrModalProps {
   isOpen: boolean;
@@ -11,6 +12,7 @@ interface QrModalProps {
 }
 
 export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
+  const { t } = useLanguage();
   const [qrUrl, setQrUrl] = useState<string>("");
   const [copied, setCopied] = useState(false);
   const targetUrl = typeof window !== "undefined" ? window.location.href : profileData.domain;
@@ -21,7 +23,7 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
         width: 320,
         margin: 2,
         color: {
-          dark: "#09090b",
+          dark: "#000000",
           light: "#ffffff",
         },
       })
@@ -63,33 +65,33 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
       role="dialog"
       aria-modal="true"
       aria-labelledby="qr-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn transition-opacity duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fadeIn transition-opacity duration-200"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-sm rounded-3xl bg-zinc-950 border border-zinc-800 p-6 shadow-2xl transition-all duration-200 active:scale-100"
+        className="relative w-full max-w-sm rounded-3xl bg-[var(--card-bg)] border border-[var(--border)] p-6 shadow-2xl transition-all duration-200 active:scale-100"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
           type="button"
-          aria-label="Cerrar modal"
-          className="absolute top-4 right-4 p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-800/80 transition-colors"
+          aria-label={t.actions.close}
+          className="absolute top-4 right-4 p-2 rounded-xl text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
 
         <div className="flex flex-col items-center text-center">
-          <h2 id="qr-modal-title" className="text-lg font-bold text-white tracking-tight mb-1">
-            Código QR de Presentación
+          <h2 id="qr-modal-title" className="text-lg font-bold text-[var(--foreground)] tracking-tight mb-1">
+            {t.qrModal.title}
           </h2>
-          <p className="text-xs text-zinc-400 mb-6">
-            Escanea para acceder a esta tarjeta digital al instante.
+          <p className="text-xs text-[var(--muted)] mb-5 max-w-xs">
+            {t.qrModal.description}
           </p>
 
           {/* QR Code Container */}
-          <div className="p-3 bg-white rounded-2xl shadow-inner mb-6">
+          <div className="p-3.5 bg-white rounded-2xl shadow-md border border-zinc-200 mb-6">
             {qrUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -99,7 +101,7 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
               />
             ) : (
               <div className="w-48 h-48 flex items-center justify-center text-zinc-600 font-mono text-xs">
-                Generando...
+                ...
               </div>
             )}
           </div>
@@ -109,17 +111,17 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
             <button
               onClick={handleCopy}
               type="button"
-              className="flex-1 min-h-[44px] flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-medium text-white bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 transition-all active:scale-[0.98]"
+              className="flex-1 min-h-[44px] flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[var(--foreground)] bg-[var(--surface-hover)] hover:bg-[var(--border)]/40 border border-[var(--border)] transition-all active:scale-[0.98] cursor-pointer"
             >
               {copied ? (
                 <>
-                  <Check className="w-4 h-4 text-emerald-400" />
-                  <span className="text-emerald-400">Copiado</span>
+                  <Check className="w-4 h-4 text-emerald-500" />
+                  <span className="text-emerald-500">{t.actions.copied}</span>
                 </>
               ) : (
                 <>
-                  <Copy className="w-4 h-4 text-zinc-300" />
-                  <span>Copiar Link</span>
+                  <Copy className="w-4 h-4 text-[var(--muted)]" />
+                  <span>{t.actions.copyLink}</span>
                 </>
               )}
             </button>
@@ -127,10 +129,10 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
             <button
               onClick={handleDownloadQr}
               type="button"
-              className="flex-1 min-h-[44px] flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-medium text-white bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 transition-all active:scale-[0.98]"
+              className="flex-1 min-h-[44px] flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-white bg-[var(--ola-blue)] hover:opacity-90 transition-all active:scale-[0.98] cursor-pointer shadow-sm"
             >
-              <Download className="w-4 h-4 text-zinc-300" />
-              <span>Guardar QR</span>
+              <Download className="w-4 h-4" />
+              <span>{t.actions.downloadQr}</span>
             </button>
           </div>
         </div>

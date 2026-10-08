@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { profileData, ProfileLink } from "@/data/profile";
+import { useLanguage } from "@/context/LanguageContext";
 
 // SVG Icon for LinkedIn
 const LinkedinIcon = ({ className }: { className?: string }) => (
@@ -53,29 +56,28 @@ const InstagramIcon = ({ className }: { className?: string }) => (
 const getLinkIcon = (id: string) => {
   switch (id) {
     case "linkedin":
-      return <LinkedinIcon className="w-5 h-5 text-blue-400" />;
+      return <LinkedinIcon className="w-5 h-5 text-[#0077b5]" />;
     case "tiktok":
-      return <TikTokIcon className="w-5 h-5 text-zinc-100" />;
+      return <TikTokIcon className="w-5 h-5 text-[var(--foreground)]" />;
     case "instagram":
-      return <InstagramIcon className="w-5 h-5 text-pink-400" />;
-    case "contact":
-      return <Mail className="w-5 h-5 text-amber-400" />;
+      return <InstagramIcon className="w-5 h-5 text-[#E1306C]" />;
     default:
       return null;
   }
 };
 
 export const LinkStream: React.FC = () => {
+  const { t } = useLanguage();
   const standardLinks = profileData.links.filter((l) => !l.featured);
 
   return (
-    <section className="w-full space-y-2.5">
+    <section className="w-full space-y-2">
       <div className="flex items-center justify-between px-1 mb-1">
-        <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
-          Canales & Perfiles
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--muted)]">
+          {t.sections.channels}
         </span>
-        <span className="text-[10px] text-zinc-500 font-mono">
-          {standardLinks.length} enlaces
+        <span className="text-[10px] text-[var(--muted)] font-mono">
+          {t.sections.linksCount(standardLinks.length)}
         </span>
       </div>
 
@@ -86,23 +88,23 @@ export const LinkStream: React.FC = () => {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between p-3.5 rounded-xl bg-zinc-900/60 hover:bg-zinc-900/90 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-200 active:scale-[0.98] min-h-[52px]"
+            className="group flex items-center justify-between p-3.5 rounded-xl apple-card hover:border-[var(--ola-blue)]/50 transition-all duration-200 active:scale-[0.98] min-h-[54px]"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-zinc-800/80 border border-zinc-700/60 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+            <div className="flex items-center gap-3.5">
+              <div className="w-9 h-9 rounded-lg bg-[var(--surface-hover)] border border-[var(--border)]/60 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
                 {getLinkIcon(link.id)}
               </div>
               <div className="text-left">
-                <span className="text-sm font-medium text-white group-hover:text-zinc-200 transition-colors">
+                <span className="text-sm font-semibold text-[var(--foreground)] group-hover:text-[var(--ola-blue)] transition-colors">
                   {link.title}
                 </span>
-                <p className="text-xs text-zinc-400 tracking-tight">
+                <p className="text-xs text-[var(--muted)] tracking-tight">
                   {link.subtitle}
                 </p>
               </div>
             </div>
 
-            <div className="w-7 h-7 rounded-md flex items-center justify-center text-zinc-400 group-hover:text-zinc-200 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+            <div className="w-7 h-7 rounded-md flex items-center justify-center text-[var(--muted)] group-hover:text-[var(--foreground)] transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
               <ArrowUpRight className="w-4 h-4" />
             </div>
           </a>
