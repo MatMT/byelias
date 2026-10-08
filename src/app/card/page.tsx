@@ -312,9 +312,9 @@ export default function BusinessCardPage() {
           {/* ===================================================================== */}
           {/* RIGHT SIDE (42%): Enlarged Bento QR Box & Generously Spaced Channels */}
           {/* ===================================================================== */}
-          <div className="relative z-10 flex flex-col justify-between items-center h-full w-[42%] pl-6 sm:pl-8 border-l border-zinc-200/70 dark:border-zinc-800/80 text-center">
+          <div className="relative z-10 flex flex-col justify-center gap-4 sm:gap-5 items-center h-full w-[42%] pl-6 sm:pl-8 border-l border-zinc-200/70 dark:border-zinc-800/80 text-center">
             {/* Top / Center: Floating Bento QR Container (Sensibly Enlarged) */}
-            <div className="w-full flex-1 flex flex-col items-center justify-center my-auto">
+            <div className="w-full flex flex-col items-center justify-center">
               <div className="p-4 rounded-2xl bg-white shadow-lg border border-zinc-200 dark:border-zinc-300 flex items-center justify-center">
                 <div className="w-36 h-36 sm:w-44 sm:h-44 aspect-square flex items-center justify-center">
                   {qrUrl ? (
@@ -337,7 +337,7 @@ export default function BusinessCardPage() {
             </div>
 
             {/* Contact Channels Stack with Increased Spacing & Breathing Room */}
-            <div className="w-full flex flex-col gap-3.5 sm:gap-4 pt-3.5 text-left">
+            <div className="w-full flex flex-col gap-3.5 sm:gap-4 text-left">
               <a
                 href="https://olabsv.com"
                 target="_blank"
