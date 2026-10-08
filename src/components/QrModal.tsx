@@ -135,6 +135,25 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
               <span>{t.actions.downloadQr}</span>
             </button>
           </div>
+
+          <a
+            href="/card"
+            className="w-full mt-2.5 min-h-[42px] flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[var(--muted)] hover:text-[var(--foreground)] bg-[var(--surface-hover)] border border-[var(--border)] transition-all active:scale-[0.98]"
+          >
+            <svg
+              className="w-4 h-4 text-[var(--ola-blue)]"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect width="20" height="14" x="2" y="5" rx="2" />
+              <line x1="2" x2="22" y1="10" y2="10" />
+            </svg>
+            <span>Ver Tarjeta Física para Imprimir (3.5″ × 2″)</span>
+          </a>
         </div>
       </div>
     </div>

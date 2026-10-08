@@ -53,6 +53,28 @@ export const FloatingNav: React.FC = () => {
 
       <div className="h-4 w-[1px] bg-[var(--border)]/60 mx-0.5" />
 
+      {/* Physical Card Link */}
+      <a
+        href="/card"
+        title="Ver Tarjeta Física para Imprimir"
+        className="w-8 h-8 flex items-center justify-center rounded-full text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-all duration-200 active:scale-95"
+      >
+        <svg
+          className="w-4 h-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect width="20" height="14" x="2" y="5" rx="2" />
+          <line x1="2" x2="22" y1="10" y2="10" />
+        </svg>
+      </a>
+
+      <div className="h-4 w-[1px] bg-[var(--border)]/60 mx-0.5" />
+
       {/* Theme Toggle Button (Apple Style) */}
       <button
         onClick={toggleTheme}
