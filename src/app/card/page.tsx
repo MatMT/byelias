@@ -57,7 +57,7 @@ export default function BusinessCardPage() {
   const [isCapturing, setIsCapturing] = useState(false);
 
   const targetQrUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://links.olabsv.com";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://me.olabsv.com";
 
   useEffect(() => {
     setMounted(true);
@@ -321,7 +321,7 @@ export default function BusinessCardPage() {
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={qrUrl}
-                      alt="QR a links.olabsv.com"
+                      alt="QR a me.olabsv.com"
                       className="w-full h-full object-contain rounded-lg"
                     />
                   ) : (
