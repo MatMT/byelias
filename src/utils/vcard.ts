@@ -5,14 +5,14 @@ export function generateAndDownloadVCard() {
     "BEGIN:VCARD",
     "VERSION:3.0",
     `FN:${profileData.fullName}`,
-    `N:Elías;Oscar;Mateo;;`,
-    `NICKNAME:${profileData.name}`,
+    `N:López;Oscar;Mateo Elías;;`,
+    `NICKNAME:${profileData.handle}`,
     `TITLE:${profileData.title}`,
-    `ORG:OLabs`,
+    `ORG:OlaLabs`,
     `EMAIL;TYPE=INTERNET,WORK;TYPE=PREF:${profileData.emails[0].email}`,
     `EMAIL;TYPE=INTERNET,HOME:${profileData.emails[1].email}`,
     `URL:${profileData.domain}`,
-    `NOTE:${profileData.taglineEs}`,
+    `NOTE:${profileData.bioEs}`,
     "END:VCARD",
   ].join("\r\n");
 
@@ -20,7 +20,7 @@ export function generateAndDownloadVCard() {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.setAttribute("download", `${profileData.name.toLowerCase()}-contact.vcf`);
+  link.setAttribute("download", `${profileData.handle.replace("@", "")}-contact.vcf`);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

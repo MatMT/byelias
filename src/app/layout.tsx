@@ -15,14 +15,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Oscar Mateo Elías (Elías) | Lead Software Developer",
+  title: "Oscar Mateo Elías López (@byelias) | Lead Software Developer & Tech Builder",
   description:
-    "Tarjeta de presentación digital de Oscar Mateo Elías (@byelias_). Computer Science Engineer & Lead Software Developer en olabsv.com.",
-  authors: [{ name: "Oscar Mateo Elías", url: "https://olabsv.com" }],
+    "Tarjeta de presentación digital de Oscar Mateo Elías López (@byelias). Lead Software Developer & Tech Builder. Fundador en OlaLabs.",
+  authors: [{ name: "Oscar Mateo Elías López", url: "https://olabsv.com" }],
   openGraph: {
-    title: "Oscar Mateo Elías (Elías) | Lead Software Developer",
+    title: "Oscar Mateo Elías López (@byelias) | Lead Software Developer & Tech Builder",
     description:
-      "Computer Science Engineer | Building scalable software & modern web experiences.",
+      "Técnico en Ingeniería en Ciencias de la Computación y estudiante activo de Ingeniería (UDB). Fundador en OlaLabs.",
     url: "https://olabsv.com",
     siteName: "Elías - Digital Card",
     images: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "https://github.com/MatMT.png",
         width: 400,
         height: 400,
-        alt: "Oscar Mateo Elías",
+        alt: "Oscar Mateo Elías López",
       },
     ],
     locale: "es_SV",
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Oscar Mateo Elías (@byelias_)",
-    description: "Computer Science Engineer & Lead Software Developer.",
+    title: "Oscar Mateo Elías López (@byelias)",
+    description: "Lead Software Developer & Tech Builder | Founder @ OlaLabs.",
     images: ["https://github.com/MatMT.png"],
   },
 };

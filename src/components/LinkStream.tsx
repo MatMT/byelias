@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
-import { profileData, ProfileLink } from "@/data/profile";
+import { profileData, SocialLinkItem } from "@/data/profile";
 import { useLanguage } from "@/context/LanguageContext";
 
 // SVG Icon for LinkedIn
@@ -67,8 +67,7 @@ const getLinkIcon = (id: string) => {
 };
 
 export const LinkStream: React.FC = () => {
-  const { t } = useLanguage();
-  const standardLinks = profileData.links.filter((l) => !l.featured);
+  const { t, locale } = useLanguage();
 
   return (
     <section className="w-full space-y-2">
@@ -77,38 +76,56 @@ export const LinkStream: React.FC = () => {
           {t.sections.channels}
         </span>
         <span className="text-[10px] text-[var(--muted)] font-mono">
-          {t.sections.linksCount(standardLinks.length)}
+          {t.sections.linksCount(profileData.socialLinks.length)}
         </span>
       </div>
 
-      <div className="flex flex-col gap-2">
-        {standardLinks.map((link: ProfileLink) => (
-          <a
-            key={link.id}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-between p-3.5 rounded-xl apple-card hover:border-[var(--ola-blue)]/50 transition-all duration-200 active:scale-[0.98] min-h-[54px]"
-          >
-            <div className="flex items-center gap-3.5">
-              <div className="w-9 h-9 rounded-lg bg-[var(--surface-hover)] border border-[var(--border)]/60 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                {getLinkIcon(link.id)}
-              </div>
-              <div className="text-left">
-                <span className="text-sm font-semibold text-[var(--foreground)] group-hover:text-[var(--ola-blue)] transition-colors">
-                  {link.title}
-                </span>
-                <p className="text-xs text-[var(--muted)] tracking-tight">
-                  {link.subtitle}
-                </p>
-              </div>
-            </div>
+      <div className="flex flex-col gap-2.5">
+        {profileData.socialLinks.map((link: SocialLinkItem) => {
+          const badge = locale === "es" ? link.badgeEs : link.badgeEn;
+          const description = locale === "es" ? link.descriptionEs : link.descriptionEn;
 
-            <div className="w-7 h-7 rounded-md flex items-center justify-center text-[var(--muted)] group-hover:text-[var(--foreground)] transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-              <ArrowUpRight className="w-4 h-4" />
-            </div>
-          </a>
-        ))}
+          return (
+            <a
+              key={link.id}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between p-3.5 rounded-2xl apple-card hover:border-[var(--ola-blue)]/50 transition-all duration-200 active:scale-[0.98] min-h-[58px]"
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-[var(--surface-hover)] border border-[var(--border)]/60 flex items-center justify-center group-hover:scale-105 transition-transform duration-200 shrink-0">
+                  {getLinkIcon(link.id)}
+                </div>
+
+                <div className="text-left">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-sm font-semibold text-[var(--foreground)] group-hover:text-[var(--ola-blue)] transition-colors">
+                      {link.title}
+                    </span>
+                    {link.handle && (
+                      <span className="text-[11px] font-mono text-[var(--muted)]">
+                        {link.handle}
+                      </span>
+                    )}
+                    {/* Tone Badge Pill */}
+                    <span className="px-2 py-0.5 text-[10px] font-medium rounded-full bg-[var(--surface-hover)] border border-[var(--border)] text-[var(--muted)] tracking-tight">
+                      {badge}
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-[var(--muted)] tracking-tight mt-0.5 leading-snug">
+                    {description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="w-7 h-7 rounded-md flex items-center justify-center text-[var(--muted)] group-hover:text-[var(--foreground)] transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0 ml-2">
+                <ArrowUpRight className="w-4 h-4" />
+              </div>
+            </a>
+          );
+        })}
       </div>
     </section>
   );

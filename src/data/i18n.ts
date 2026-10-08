@@ -6,7 +6,6 @@ export interface TranslationDictionary {
     subtext: string;
   };
   role: string;
-  tagline: string;
   actions: {
     saveContact: string;
     showQr: string;
@@ -17,9 +16,11 @@ export interface TranslationDictionary {
     close: string;
     downloadQr: string;
     copyLink: string;
+    moreSkills: string;
+    lessSkills: string;
   };
   sections: {
-    featuredVenture: string;
+    projectsAndVentures: string;
     channels: string;
     directContact: string;
     techFocus: string;
@@ -51,8 +52,7 @@ export const translations: Record<Locale, TranslationDictionary> = {
       status: "Disponible",
       subtext: "Disponible para proyectos & consultoría",
     },
-    role: "Lead Software Developer",
-    tagline: "Computer Science Engineer | Construyendo software escalable, interfaces de alto calibre y experiencias web modernas.",
+    role: "Lead Software Developer & Tech Builder",
     actions: {
       saveContact: "Guardar Contacto",
       showQr: "Código QR",
@@ -63,9 +63,11 @@ export const translations: Record<Locale, TranslationDictionary> = {
       close: "Cerrar",
       downloadQr: "Descargar QR",
       copyLink: "Copiar Enlace",
+      moreSkills: "+ Más",
+      lessSkills: "− Menos",
     },
     sections: {
-      featuredVenture: "Venture Destacado",
+      projectsAndVentures: "Proyectos & Emprendimientos",
       channels: "Canales & Redes",
       directContact: "Contacto Directo",
       techFocus: "Especialidades Técnicas",
@@ -87,7 +89,7 @@ export const translations: Record<Locale, TranslationDictionary> = {
     },
     footer: {
       rights: "Todos los derechos reservados.",
-      title: "Computer Science Engineer",
+      title: "Lead Software Developer & Tech Builder",
     },
   },
   en: {
@@ -95,8 +97,7 @@ export const translations: Record<Locale, TranslationDictionary> = {
       status: "Available",
       subtext: "Available for projects & consulting",
     },
-    role: "Lead Software Developer",
-    tagline: "Computer Science Engineer | Building scalable software, high-craft interfaces, and modern web experiences.",
+    role: "Lead Software Developer & Tech Builder",
     actions: {
       saveContact: "Save Contact",
       showQr: "QR Code",
@@ -107,9 +108,11 @@ export const translations: Record<Locale, TranslationDictionary> = {
       close: "Close",
       downloadQr: "Download QR",
       copyLink: "Copy Link",
+      moreSkills: "+ More",
+      lessSkills: "− Less",
     },
     sections: {
-      featuredVenture: "Featured Venture",
+      projectsAndVentures: "Projects & Ventures",
       channels: "Channels & Socials",
       directContact: "Direct Contact",
       techFocus: "Technical Focus",
@@ -131,7 +134,7 @@ export const translations: Record<Locale, TranslationDictionary> = {
     },
     footer: {
       rights: "All rights reserved.",
-      title: "Computer Science Engineer",
+      title: "Lead Software Developer & Tech Builder",
     },
   },
 };

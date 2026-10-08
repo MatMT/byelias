@@ -46,14 +46,14 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ onOpenQr }) => {
         </div>
       </div>
 
-      {/* Name and Brand Tag */}
+      {/* Name and Handle Tag */}
       <div className="space-y-1 mb-2">
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center justify-center gap-2 flex-wrap">
           <h1 className="text-2xl font-bold tracking-tight text-[var(--foreground)] sm:text-3xl">
             {profileData.fullName}
           </h1>
-          <span className="px-2 py-0.5 text-xs font-semibold rounded-md bg-[var(--surface-hover)] border border-[var(--border)] text-[var(--muted)]">
-            {profileData.name}
+          <span className="px-2 py-0.5 text-xs font-semibold rounded-md bg-[var(--surface-hover)] border border-[var(--border)] text-[var(--ola-blue)] font-mono">
+            {profileData.handle}
           </span>
         </div>
         <p className="text-sm font-semibold text-[var(--ola-blue)] tracking-tight">
@@ -61,9 +61,9 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ onOpenQr }) => {
         </p>
       </div>
 
-      {/* Tagline / Bio */}
+      {/* Tagline / Academic Detail Bio */}
       <p className="text-xs text-[var(--muted)] max-w-sm sm:max-w-md leading-relaxed mb-6">
-        {locale === "es" ? profileData.taglineEs : profileData.taglineEn}
+        {locale === "es" ? profileData.bioEs : profileData.bioEn}
       </p>
 
       {/* Primary Action Buttons Bar */}
