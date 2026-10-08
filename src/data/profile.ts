@@ -49,9 +49,9 @@ export const profileData: ProfileData = {
   fullName: "Oscar Mateo Elías López",
   title: "Lead Software Developer & Tech Builder",
   bioEs:
-    "Técnico en CC. de la Computación & estudiante de Ingeniería (UDB). Creando software y divulgando tecnología. Fundador en OlaLabs.",
+    "Técnico en Ingeniería en Computación y estudiante activo de Ingeniería en Ciencias de la Computación (UDB). Creando software y divulgando tecnología. Fundador en OlaLabs.",
   bioEn:
-    "CS Associate & Engineering Student @ UDB. Building software & tech content. Founder at OlaLabs.",
+    "Associate Degree in Computer Engineering & Computer Science Engineering Student @ UDB. Building software & tech content. Founder at OlaLabs.",
   domain: "https://olabsv.com",
   avatarUrl: "https://github.com/MatMT.png",
   github: "https://github.com/MatMT",

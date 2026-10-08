@@ -14,13 +14,12 @@ export default function HomePage() {
   const [isQrOpen, setIsQrOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col justify-between py-12 px-4 sm:px-6 lg:px-8 overflow-x-hidden">
-      {/* Ambient Top Glow Spotlight & Apple Mesh */}
+    <div className="relative min-h-screen w-full flex flex-col justify-between pt-12 pb-24 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+      {/* Subtle Atmospheric Ambient Glow (Apple / OlaStudio Design System) */}
       <div
-        className="pointer-events-none fixed -top-48 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-b from-[var(--ola-blue)]/10 via-[var(--ola-blue)]/5 to-transparent blur-3xl rounded-full"
+        className="pointer-events-none fixed -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[radial-gradient(ellipse_at_top,var(--ola-blue),transparent_70%)] opacity-15 blur-[120px]"
         aria-hidden="true"
       />
-      <div className="pointer-events-none fixed inset-0 bg-mesh-pattern" aria-hidden="true" />
 
       {/* Floating Navigation Pill (i18n [ES | EN] + Theme Switcher) */}
       <FloatingNav />

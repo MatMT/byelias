@@ -16,9 +16,9 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ onOpenQr }) => {
 
   return (
     <header className="flex flex-col items-center text-center">
-      {/* Avatar Container with Apple HIG halo */}
+      {/* Clean Circular Avatar */}
       <div className="relative mb-4">
-        <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-[3px] bg-gradient-to-b from-[var(--border)] to-[var(--card-bg)] shadow-xl">
+        <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-[2px] bg-gradient-to-b from-[var(--border)] to-[var(--card-bg)] shadow-md">
           <div className="relative w-full h-full rounded-full overflow-hidden bg-[var(--card-bg)]">
             <Image
               src={profileData.avatarUrl}
@@ -30,25 +30,11 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ onOpenQr }) => {
             />
           </div>
         </div>
-
-        {/* Live Availability Beacon */}
-        <div
-          className="absolute bottom-0 right-0 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--card-bg)] border border-[var(--border)] shadow-md backdrop-blur-md"
-          title={t.availability.subtext}
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          <span className="text-[10px] font-semibold tracking-tight text-[var(--foreground)]">
-            {t.availability.status}
-          </span>
-        </div>
       </div>
 
-      {/* Name and Handle Tag */}
+      {/* Name and Handle Tag (Line break on mobile, inline on desktop) */}
       <div className="space-y-1 mb-2">
-        <div className="flex items-center justify-center gap-2 flex-wrap">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2">
           <h1 className="text-2xl font-bold tracking-tight text-[var(--foreground)] sm:text-3xl">
             {profileData.fullName}
           </h1>
