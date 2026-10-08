@@ -33,8 +33,8 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ onOpenQr }) => {
       </div>
 
       {/* Name and Handle Tag (Line break on mobile, inline on desktop) */}
-      <div className="space-y-1 mb-2">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2">
+      <div className="space-y-3 mb-2">
+        <div className="space-y-1.5 sm:gap-2">
           <h1 className="text-2xl font-bold tracking-tight text-[var(--foreground)] sm:text-3xl">
             {profileData.fullName}
           </h1>

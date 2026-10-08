@@ -10,7 +10,7 @@ export const CardFooter: React.FC = () => {
   return (
     <footer className="w-full pt-8 pb-4 border-t border-[var(--border)]/60 text-center space-y-2">
       <p className="text-xs text-[var(--muted)] font-medium">
-        © 2026 {profileData.fullName} ({profileData.name}) • {t.footer.rights}
+        © 2026 {profileData.fullName} • {t.footer.rights}
       </p>
       <div className="flex items-center justify-center gap-3 text-[11px] text-[var(--muted)]">
         <a
