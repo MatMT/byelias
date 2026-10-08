@@ -25,10 +25,6 @@ export const FeaturedProject: React.FC = () => {
           <Sparkles className="w-3.5 h-3.5 text-amber-400" />
           {t.sections.projectsAndVentures}
         </span>
-        <span className="text-[10px] text-emerald-500 font-semibold font-mono flex items-center gap-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          Ventures
-        </span>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

@@ -14,9 +14,6 @@ export const TechPills: React.FC = () => {
         <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--muted)]">
           {t.sections.techFocus}
         </span>
-        <span className="text-[10px] text-[var(--muted)] font-mono">
-          {profileData.coreSkills.length + (isExpanded ? profileData.moreSkills.length : 0)} tech
-        </span>
       </div>
 
       <div className="flex flex-wrap gap-1.5 items-center">

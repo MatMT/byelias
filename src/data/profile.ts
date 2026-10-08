@@ -15,14 +15,13 @@ export interface SocialLinkItem {
   handle?: string;
   badgeEs: string;
   badgeEn: string;
-  descriptionEs: string;
-  descriptionEn: string;
   url: string;
 }
 
 export interface EmailContactItem {
   id: "work" | "personal" | "icloud";
-  typeKey: "workLabel" | "personalLabel" | "icloudLabel";
+  labelEs: string;
+  labelEn: string;
   email: string;
   isPrimary?: boolean;
 }
@@ -50,9 +49,9 @@ export const profileData: ProfileData = {
   fullName: "Oscar Mateo Elías López",
   title: "Lead Software Developer & Tech Builder",
   bioEs:
-    "Técnico en Ingeniería en Ciencias de la Computación y estudiante activo de Ingeniería (UDB). Apasionado por la tecnología, el software escalable y la comunicación digital. Fundador en OlaLabs.",
+    "Técnico en CC. de la Computación & estudiante de Ingeniería (UDB). Creando software y divulgando tecnología. Fundador en OlaLabs.",
   bioEn:
-    "Associate Degree (Técnico) in Computer Science & active Engineering Student @ UDB. Passionate about software architecture, modern web and tech storytelling. Founder at OlaLabs.",
+    "CS Associate & Engineering Student @ UDB. Building software & tech content. Founder at OlaLabs.",
   domain: "https://olabsv.com",
   avatarUrl: "https://github.com/MatMT.png",
   github: "https://github.com/MatMT",
@@ -83,8 +82,6 @@ export const profileData: ProfileData = {
       title: "LinkedIn",
       badgeEs: "Carrera",
       badgeEn: "Career",
-      descriptionEs: "Logros profesionales, proyectos y networking",
-      descriptionEn: "Professional achievements, projects & network",
       url: "https://www.linkedin.com/in/oscarelias2004",
     },
     {
@@ -93,8 +90,6 @@ export const profileData: ProfileData = {
       handle: "@byelias_",
       badgeEs: "Tech & Vida UDB",
       badgeEn: "Vlog & Tech",
-      descriptionEs: "Anécdotas, eventos en la UDB, reflexiones y tecnología",
-      descriptionEn: "Tech stories, UDB university life & engineering events",
       url: "https://tiktok.com/@byelias_",
     },
     {
@@ -103,26 +98,27 @@ export const profileData: ProfileData = {
       handle: "@byelias._",
       badgeEs: "Personal",
       badgeEn: "Lifestyle",
-      descriptionEs: "Vida personal, fotos, historias y momentos cotidianos",
-      descriptionEn: "Personal updates, daily life, and stories",
       url: "https://instagram.com/byelias._",
     },
   ],
   emails: [
     {
       id: "work",
-      typeKey: "workLabel",
+      labelEs: "Trabajo / OlaLabs",
+      labelEn: "Work / OlaLabs",
       email: "oelias@olabsv.com",
       isPrimary: true,
     },
     {
       id: "personal",
-      typeKey: "personalLabel",
+      labelEs: "Personal",
+      labelEn: "Personal",
       email: "oscarmateoelias@gmail.com",
     },
     {
       id: "icloud",
-      typeKey: "icloudLabel",
+      labelEs: "iCloud",
+      labelEn: "iCloud",
       email: "oscarmateoelias@icloud.com",
     },
   ],

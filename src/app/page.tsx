@@ -28,7 +28,7 @@ export default function HomePage() {
       {/* Main Adaptive Layout */}
       <main className="relative z-10 w-full my-auto">
         {/* MOBILE LAYOUT (< 1024px): Single Centered Vertical Bento (max-w-md) */}
-        <div className="lg:hidden w-full max-w-md mx-auto apple-card rounded-3xl p-6 sm:p-8 space-y-6">
+        <div className="lg:hidden w-full max-w-md mx-auto apple-card rounded-3xl p-7 sm:p-9 space-y-7">
           <CardHeader onOpenQr={() => setIsQrOpen(true)} />
           <FeaturedProject />
           <LinkStream />
@@ -38,17 +38,17 @@ export default function HomePage() {
         </div>
 
         {/* DESKTOP LAYOUT (>= 1024px): Balanced 2-Column Split-Screen / Bento (max-w-5xl) */}
-        <div className="hidden lg:grid grid-cols-12 max-w-5xl mx-auto gap-8 items-start">
+        <div className="hidden lg:grid grid-cols-12 max-w-5xl mx-auto gap-8 lg:gap-10 items-start">
           {/* Left Column: Fixed / Sticky Profile Information & Tech Stack (5 cols) */}
-          <div className="col-span-5 sticky top-8 apple-card rounded-3xl p-8 space-y-6 shadow-xl">
+          <div className="col-span-5 sticky top-8 apple-card rounded-3xl p-8 sm:p-9 space-y-7 shadow-xl">
             <CardHeader onOpenQr={() => setIsQrOpen(true)} />
-            <div className="pt-4 border-t border-[var(--border)]/60">
+            <div className="pt-5 border-t border-[var(--border)]/60">
               <TechPills />
             </div>
           </div>
 
           {/* Right Column: Stacked Content Blocks (7 cols) */}
-          <div className="col-span-7 space-y-6">
+          <div className="col-span-7 space-y-7">
             <FeaturedProject />
             <LinkStream />
             <EmailModule />
