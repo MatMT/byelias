@@ -27,7 +27,7 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// Combined Socials Icon (TikTok / Instagram)
+// Combined Socials Icon (TikTok & Instagram)
 const SocialShareIcon = ({ className }: { className?: string }) => (
   <svg
     className={className}
@@ -54,7 +54,8 @@ export default function BusinessCardPage() {
   const [copiedImage, setCopiedImage] = useState(false);
   const [isCapturing, setIsCapturing] = useState(false);
 
-  const targetQrUrl = "https://byelias-five.vercel.app";
+  const targetQrUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://links.olabsv.com";
 
   useEffect(() => {
     setMounted(true);
@@ -69,7 +70,7 @@ export default function BusinessCardPage() {
     })
       .then((url) => setQrUrl(url))
       .catch(console.error);
-  }, []);
+  }, [targetQrUrl]);
 
   const handlePrint = () => {
     if (typeof window !== "undefined") {
@@ -97,11 +98,11 @@ export default function BusinessCardPage() {
         setCopiedImage(true);
         setTimeout(() => setCopiedImage(false), 2500);
       } else {
-        // Fallback: descarga directa en caso de no soportar escritura de imágenes
+        // Fallback: descarga directa en caso de navegadores con restricciones
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "byelias-presentation-card.png";
+        a.download = "byelias-card-split.png";
         a.click();
         URL.revokeObjectURL(url);
         setCopiedImage(true);
@@ -192,68 +193,72 @@ export default function BusinessCardPage() {
         </button>
       </nav>
 
-      {/* High-Resolution Physical Business Card (Standard 3.5" x 2" ratio = 1.75:1) */}
-      <div className="w-full max-w-[760px] my-auto">
+      {/* High-Resolution Bicolor / Split Physical Business Card (Standard 3.5" x 2" ratio = 1.75:1) */}
+      <div className="w-full max-w-[780px] my-auto">
         <div
           id="business-card"
-          className="print-card apple-card rounded-3xl p-6 sm:p-8 relative overflow-hidden flex flex-row items-stretch justify-between w-full aspect-[1.75/1] min-h-[380px] sm:min-h-[420px] border border-[var(--border)] shadow-2xl bg-[var(--card-bg)]"
+          className="print-card rounded-3xl overflow-hidden border border-zinc-200/90 dark:border-zinc-800 shadow-2xl flex flex-row items-stretch w-full aspect-[1.75/1] min-h-[390px] sm:min-h-[430px]"
         >
-          {/* Subtle Ambient Card Glow */}
-          <div
-            className="pointer-events-none absolute -top-32 -left-32 w-80 h-80 bg-[radial-gradient(circle,var(--ola-blue),transparent_70%)] opacity-10 blur-3xl"
-            aria-hidden="true"
-          />
-
-          {/* LEFT SIDE: Identity, Expanded Typography, Academic Title & Tech Stack (62%) */}
-          <div className="relative z-10 flex flex-col justify-between h-full w-[62%] pr-5 sm:pr-7">
-            {/* Header: Photo (w-20/w-24), Full Name & Handle */}
-            <div className="flex items-center gap-4 sm:gap-5">
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2.5px] bg-gradient-to-b from-[var(--border)] to-[var(--card-bg)] shadow-lg shrink-0">
-                <div className="relative w-full h-full rounded-full overflow-hidden bg-[var(--card-bg)]">
+          {/* ========================================================================= */}
+          {/* LEFT HALF (58%): Clean White Surface for Identity, Academics & Tech Stack */}
+          {/* ========================================================================= */}
+          <div className="w-[58%] sm:w-[60%] bg-white dark:bg-zinc-900 p-6 sm:p-8 flex flex-col justify-between text-left transition-colors duration-250">
+            {/* Header: Square Modern Avatar (rounded-2xl) + Name & Handle */}
+            <div className="flex items-start gap-4 sm:gap-5">
+              {/* Square Avatar Container */}
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden p-[2.5px] bg-gradient-to-b from-zinc-200 to-zinc-100 dark:from-zinc-700 dark:to-zinc-800 shadow-md border border-zinc-200/80 dark:border-zinc-700 shrink-0">
+                <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-zinc-100 dark:bg-zinc-800">
                   <Image
                     src={profileData.avatarUrl}
                     alt={profileData.fullName}
-                    width={96}
-                    height={96}
+                    width={112}
+                    height={112}
                     priority
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
 
-              <div className="space-y-1">
-                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--foreground)] leading-tight">
+              {/* Name & Handle */}
+              <div className="space-y-1 pt-1">
+                <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-white leading-tight">
                   {profileData.fullName}
                 </h1>
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-xs sm:text-sm font-mono font-bold text-[var(--ola-blue)]">
+                  <span className="text-xs sm:text-sm font-mono font-bold text-[#0071e3] dark:text-[#2997ff]">
                     {profileData.handle}
                   </span>
-                  <span className="text-xs text-[var(--muted)]">•</span>
-                  <span className="text-xs font-semibold text-[var(--muted)] flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 text-amber-400" />
+                  <span className="text-xs text-zinc-400">•</span>
+                  <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 flex items-center gap-1">
+                    <Sparkles className="w-3 h-3 text-amber-500" />
                     OlaLabs
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Role & Academic Title with exact sizing */}
-            <div className="my-auto space-y-1.5 py-2">
-              <p className="text-base sm:text-lg font-semibold text-[var(--ola-blue)] tracking-tight">
+            {/* Role & Clean Academic Breakdown (Con salto de línea) */}
+            <div className="my-auto space-y-2 py-2">
+              <p className="text-sm sm:text-base font-bold text-[#0071e3] dark:text-[#2997ff] tracking-tight">
                 {profileData.title}
               </p>
-              <p className="text-xs sm:text-sm font-medium text-zinc-600 dark:text-zinc-300 leading-snug max-w-sm">
-                Técnico en Ing. en Computación | Estudiante Ing. en CC. de la Computación (UDB)
-              </p>
+              
+              <div className="space-y-0.5 text-xs sm:text-sm leading-snug">
+                <p className="font-semibold text-zinc-800 dark:text-zinc-200">
+                  Técnico en Ing. en Computación
+                </p>
+                <p className="font-medium text-zinc-500 dark:text-zinc-400">
+                  Estudiante de Ing. en Ciencias de la Computación (UDB)
+                </p>
+              </div>
             </div>
 
-            {/* Tech Stack Pills with enhanced sizing and padding */}
+            {/* Tech Stack Pills */}
             <div className="flex flex-wrap gap-1.5 mt-auto pt-2">
               {["TypeScript", "Next.js", "IA", "Architecture", "+ Más"].map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-lg bg-[var(--surface-hover)] border border-[var(--border)] text-[var(--foreground)]"
+                  className="px-2.5 sm:px-3 py-1 sm:py-1.5 text-xs font-semibold rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200"
                 >
                   {tag}
                 </span>
@@ -261,56 +266,66 @@ export default function BusinessCardPage() {
             </div>
           </div>
 
-          {/* RIGHT SIDE: Centered Bento QR Code & Full Social Handles (38%) */}
-          <div className="relative z-10 flex flex-col justify-between items-center h-full w-[38%] pl-5 sm:pl-7 border-l border-[var(--border)]/70">
-            {/* QR Code Bento Box Container (Centrado Verticalmente) */}
-            <div className="w-full flex-1 flex flex-col items-center justify-center p-3 sm:p-4 rounded-2xl bg-white border border-zinc-200 shadow-md my-auto max-h-[220px]">
-              <div className="w-full max-w-[140px] sm:max-w-[155px] aspect-square flex items-center justify-center">
-                {qrUrl ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={qrUrl}
-                    alt="QR a byelias-five.vercel.app"
-                    className="w-full h-full object-contain rounded-lg"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-xs text-zinc-500 font-mono">
-                    Generando QR...
-                  </div>
-                )}
+          {/* ========================================================================= */}
+          {/* RIGHT HALF (42%): Solid OlaStudio Blue for QR Code & Contact Channels     */}
+          {/* ========================================================================= */}
+          <div className="w-[42%] sm:w-[40%] bg-gradient-to-br from-[#0071e3] to-[#0055b3] p-5 sm:p-7 flex flex-col justify-between items-center text-white relative overflow-hidden text-center shadow-inner">
+            {/* Ambient Reflection Lighting */}
+            <div
+              className="pointer-events-none absolute -top-24 -right-24 w-64 h-64 bg-white/10 blur-3xl rounded-full"
+              aria-hidden="true"
+            />
+
+            {/* QR Section: Bright White Floating Bento Card */}
+            <div className="w-full flex-1 flex flex-col items-center justify-center my-auto">
+              <div className="p-3 sm:p-3.5 rounded-2xl bg-white shadow-xl border border-white/20 flex items-center justify-center">
+                <div className="w-28 h-28 sm:w-32 sm:h-32 aspect-square flex items-center justify-center">
+                  {qrUrl ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={qrUrl}
+                      alt="QR a links.olabsv.com"
+                      className="w-full h-full object-contain rounded-lg"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-xs text-zinc-500 font-mono">
+                      Generando QR...
+                    </div>
+                  )}
+                </div>
               </div>
-              <span className="text-[9px] sm:text-[10px] font-mono text-zinc-600 mt-1.5 font-bold tracking-tight">
+              <span className="text-white/95 text-xs font-semibold mt-2.5 tracking-tight drop-shadow-sm">
                 Escanea para conectar
               </span>
             </div>
 
-            {/* Complete Links & Handles List below QR */}
+            {/* Contact Channels Stack with Pure White Typography & Icons */}
             <div className="w-full space-y-2 pt-3 text-left">
               <a
                 href="https://olabsv.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xs sm:text-sm font-medium text-[var(--foreground)] hover:text-[var(--ola-blue)] transition-colors truncate"
+                className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white hover:text-white/80 transition-colors truncate drop-shadow-sm"
               >
-                <Globe className="w-4 h-4 text-[var(--ola-blue)] shrink-0" />
-                <span className="font-mono font-semibold truncate">olabsv.com</span>
+                <Globe className="w-4 h-4 text-white shrink-0" />
+                <span className="font-mono truncate">olabsv.com</span>
               </a>
 
               <a
                 href="mailto:oelias@olabsv.com"
-                className="flex items-center gap-2 text-xs sm:text-sm font-medium text-[var(--foreground)] hover:text-[var(--ola-blue)] transition-colors truncate"
+                className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white hover:text-white/80 transition-colors truncate drop-shadow-sm"
               >
-                <Mail className="w-4 h-4 text-[var(--ola-blue)] shrink-0" />
-                <span className="font-mono font-semibold truncate">oelias@olabsv.com</span>
+                <Mail className="w-4 h-4 text-white shrink-0" />
+                <span className="font-mono truncate">oelias@olabsv.com</span>
               </a>
 
               <a
                 href="https://www.linkedin.com/in/oscarelias2004"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xs sm:text-sm font-medium text-[var(--foreground)] hover:text-[#0077b5] transition-colors truncate"
+                className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white hover:text-white/80 transition-colors truncate drop-shadow-sm"
               >
-                <LinkedinIcon className="w-4 h-4 text-[#0077b5] shrink-0" />
+                <LinkedinIcon className="w-4 h-4 text-white shrink-0" />
                 <span className="font-mono truncate">in/oscarelias2004</span>
               </a>
 
@@ -318,10 +333,10 @@ export default function BusinessCardPage() {
                 href="https://tiktok.com/@byelias_"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xs sm:text-sm font-medium text-[var(--foreground)] hover:text-[var(--ola-blue)] transition-colors truncate"
+                className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white hover:text-white/80 transition-colors truncate drop-shadow-sm"
               >
-                <SocialShareIcon className="w-4 h-4 text-purple-400 shrink-0" />
-                <span className="font-mono font-semibold truncate">@byelias_</span>
+                <SocialShareIcon className="w-4 h-4 text-white shrink-0" />
+                <span className="font-mono truncate">@byelias_</span>
               </a>
             </div>
           </div>
@@ -329,7 +344,7 @@ export default function BusinessCardPage() {
 
         {/* Informative Footer note on screen (No Print) */}
         <p className="text-center text-xs text-[var(--muted)] mt-5 no-print">
-          Formato estándar 3.5″ × 2″ apaisado • Resolución Retina optimizada para portapapeles, PDF o impresión física
+          Estética Split OlaStudio • Formato estándar 3.5″ × 2″ apaisado • Optimizado para impresión física y copiado en resolución Retina
         </p>
       </div>
     </div>
