@@ -269,23 +269,25 @@ export default function BusinessCardPage() {
               Full-Stack Developer &amp; Presidente ASECC (UDB). Fundador de OlaLabs. Enfocado en software escalable, innovación y divulgación tech.
             </p>
 
-            {/* Technical Skills: 2 Balanced Harmonious Rows */}
+            {/* Technical Skills: Strictly 2 Balanced Rows */}
             <div className="flex flex-col gap-1.5 mt-auto pt-3">
-              <div className="flex flex-wrap gap-1.5">
-                {["TypeScript", "Next.js / React", "IA", "Systems Architecture"].map((skill) => (
+              {/* Row 1: Core Stack */}
+              <div className="flex flex-nowrap items-center gap-1.5">
+                {["TypeScript", "Next.js / React", "IA", "Architecture"].map((skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1 text-xs font-mono font-medium rounded-lg bg-zinc-100 dark:bg-zinc-800/90 border border-zinc-200/90 dark:border-zinc-700/80 text-zinc-700 dark:text-zinc-300"
+                    className="px-2.5 py-1 text-[11px] sm:text-xs font-mono font-medium rounded-lg bg-zinc-100 dark:bg-zinc-800/90 border border-zinc-200/90 dark:border-zinc-700/80 text-zinc-700 dark:text-zinc-300 whitespace-nowrap shrink-0"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
-              <div className="flex flex-wrap gap-1.5">
-                {["Laravel", "Astro", "Docker", "Web3 / Bitcoin", "+ Más"].map((skill) => (
+              {/* Row 2: Backend, Cloud & Ecosystem */}
+              <div className="flex flex-nowrap items-center gap-1.5">
+                {["Docker", "Laravel", "Astro", "Web3 / Bitcoin", "+ Más"].map((skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1 text-xs font-mono font-medium rounded-lg bg-zinc-100 dark:bg-zinc-800/90 border border-zinc-200/90 dark:border-zinc-700/80 text-zinc-700 dark:text-zinc-300"
+                    className="px-2.5 py-1 text-[11px] sm:text-xs font-mono font-medium rounded-lg bg-zinc-100 dark:bg-zinc-800/90 border border-zinc-200/90 dark:border-zinc-700/80 text-zinc-700 dark:text-zinc-300 whitespace-nowrap shrink-0"
                   >
                     {skill}
                   </span>
@@ -316,28 +318,28 @@ export default function BusinessCardPage() {
                   )}
                 </div>
               </div>
-              <span className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400 mt-2 font-medium tracking-tight">
+              <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400 mt-2 font-medium tracking-tight">
                 Escanea para conectar
               </span>
             </div>
 
             {/* Contact Channels Stack with Increased Spacing & Breathing Room */}
-            <div className="w-full flex flex-col gap-2.5 sm:gap-3 pt-3 text-left">
+            <div className="w-full flex flex-col gap-3.5 sm:gap-4 pt-3.5 text-left">
               <a
                 href="https://olabsv.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-[var(--ola-blue)] transition-colors truncate"
+                className="flex items-center gap-3 text-sm font-medium text-zinc-700 dark:text-zinc-200 hover:text-[var(--ola-blue)] transition-colors truncate"
               >
-                <Globe className="w-4 h-4 text-[var(--ola-blue)] shrink-0" />
+                <Globe className="w-[18px] h-[18px] text-[var(--ola-blue)] shrink-0" />
                 <span className="font-mono font-semibold truncate">olabsv.com</span>
               </a>
 
               <a
                 href="mailto:oelias@olabsv.com"
-                className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-[var(--ola-blue)] transition-colors truncate"
+                className="flex items-center gap-3 text-sm font-medium text-zinc-700 dark:text-zinc-200 hover:text-[var(--ola-blue)] transition-colors truncate"
               >
-                <Mail className="w-4 h-4 text-[var(--ola-blue)] shrink-0" />
+                <Mail className="w-[18px] h-[18px] text-[var(--ola-blue)] shrink-0" />
                 <span className="font-mono font-semibold truncate">oelias@olabsv.com</span>
               </a>
 
@@ -345,9 +347,9 @@ export default function BusinessCardPage() {
                 href="https://www.linkedin.com/in/oscarelias2004"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-[#0077b5] transition-colors truncate"
+                className="flex items-center gap-3 text-sm font-medium text-zinc-700 dark:text-zinc-200 hover:text-[#0077b5] transition-colors truncate"
               >
-                <LinkedinIcon className="w-4 h-4 text-[#0077b5] shrink-0" />
+                <LinkedinIcon className="w-[18px] h-[18px] text-[#0077b5] shrink-0" />
                 <span className="font-mono truncate">in/oscarelias2004</span>
               </a>
 
@@ -355,9 +357,9 @@ export default function BusinessCardPage() {
                 href="https://tiktok.com/@byelias_"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-[var(--ola-blue)] transition-colors truncate"
+                className="flex items-center gap-3 text-sm font-medium text-zinc-700 dark:text-zinc-200 hover:text-[var(--ola-blue)] transition-colors truncate"
               >
-                <Zap className="w-4 h-4 text-amber-500 shrink-0" />
+                <Zap className="w-[18px] h-[18px] text-amber-500 shrink-0" />
                 <span className="font-mono font-semibold truncate">@byelias_</span>
               </a>
             </div>
