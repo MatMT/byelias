@@ -58,13 +58,13 @@ export const FloatingNav: React.FC = () => {
         </button>
       </div>
 
-      <div className="h-4 w-[1px] bg-[var(--border)]/60 mx-0.5" />
+      <div className="hidden sm:block h-4 w-[1px] bg-[var(--border)]/60 mx-0.5" />
 
       {/* Physical Card Link */}
       <Link
         href="/card"
         title="Ver Tarjeta Física para Imprimir"
-        className="w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center rounded-full text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-transform transition-colors duration-150 active:scale-95"
+        className="hidden sm:flex w-9 h-9 sm:w-8 sm:h-8 items-center justify-center rounded-full text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-transform transition-colors duration-150 active:scale-95"
       >
         <svg
           className="w-4 h-4"

@@ -139,7 +139,7 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
 
           <Link
             href="/card"
-            className="w-full mt-2.5 min-h-[44px] flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[var(--muted)] hover:text-[var(--foreground)] bg-[var(--surface-hover)] border border-[var(--border)] transition-transform transition-colors duration-150 active:scale-[0.98]"
+            className="hidden sm:flex w-full mt-2.5 min-h-[44px] items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[var(--muted)] hover:text-[var(--foreground)] bg-[var(--surface-hover)] border border-[var(--border)] transition-transform transition-colors duration-150 active:scale-[0.98]"
           >
             <svg
               className="w-4 h-4 text-[var(--ola-blue)]"
