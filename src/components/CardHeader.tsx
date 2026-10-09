@@ -58,7 +58,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ onOpenQr }) => {
         <button
           onClick={generateAndDownloadVCard}
           type="button"
-          className="flex-1 min-h-[44px] flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-[var(--ola-blue)] hover:opacity-90 transition-all duration-200 active:scale-[0.98] shadow-sm cursor-pointer"
+          className="flex-1 min-h-[44px] flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-[var(--ola-blue)] hover:opacity-90 transition-transform transition-opacity duration-150 active:scale-[0.98] shadow-sm cursor-pointer"
         >
           <Download className="w-4 h-4" />
           <span>{t.actions.saveContact}</span>
@@ -70,7 +70,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ onOpenQr }) => {
           type="button"
           aria-label={t.actions.showQr}
           title={t.actions.showQr}
-          className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2.5 rounded-xl text-xs font-medium text-[var(--foreground)] bg-[var(--surface-hover)] hover:bg-[var(--border)]/40 border border-[var(--border)] transition-all duration-200 active:scale-[0.98] cursor-pointer"
+          className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2.5 rounded-xl text-xs font-medium text-[var(--foreground)] bg-[var(--surface-hover)] hover:bg-[var(--border)]/40 border border-[var(--border)] transition-transform transition-colors duration-150 active:scale-[0.98] cursor-pointer"
         >
           <QrCode className="w-4 h-4" />
         </button>

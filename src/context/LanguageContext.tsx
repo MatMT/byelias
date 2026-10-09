@@ -1,6 +1,13 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useCallback,
+  useMemo,
+  useSyncExternalStore,
+  startTransition,
+} from "react";
 import { Locale, TranslationDictionary, translations } from "@/data/i18n";
 
 interface LanguageContextType {
@@ -15,31 +22,57 @@ const LanguageContext = createContext<LanguageContextType>({
   t: translations.es,
 });
 
+const LOCALE_KEY = "byelias_locale";
+const listeners = new Set<() => void>();
+
+function subscribe(callback: () => void) {
+  listeners.add(callback);
+  return () => {
+    listeners.delete(callback);
+  };
+}
+
+function getSnapshot(): Locale {
+  try {
+    const saved = localStorage.getItem(LOCALE_KEY);
+    if (saved === "es" || saved === "en") return saved;
+  } catch {
+    // Ignore storage errors
+  }
+  return "es";
+}
+
+function getServerSnapshot(): Locale {
+  return "es";
+}
+
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [locale, setLocaleState] = useState<Locale>("es");
+  const locale = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("byelias_locale") as Locale | null;
-    if (saved && (saved === "es" || saved === "en")) {
-      setLocaleState(saved);
+  const setLocale = useCallback((newLocale: Locale) => {
+    try {
+      localStorage.setItem(LOCALE_KEY, newLocale);
+    } catch {
+      // Ignore storage errors
     }
+    startTransition(() => {
+      listeners.forEach((listener) => listener());
+    });
   }, []);
 
-  const setLocale = (newLocale: Locale) => {
-    setLocaleState(newLocale);
-    localStorage.setItem("byelias_locale", newLocale);
-  };
+  const value = useMemo(
+    () => ({
+      locale,
+      setLocale,
+      t: translations[locale],
+    }),
+    [locale, setLocale]
+  );
 
   return (
-    <LanguageContext.Provider
-      value={{
-        locale,
-        setLocale,
-        t: translations[locale],
-      }}
-    >
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );

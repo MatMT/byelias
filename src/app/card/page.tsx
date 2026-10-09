@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import QRCode from "qrcode";
@@ -18,6 +18,16 @@ import {
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { profileData } from "@/data/profile";
+
+const emptySubscribe = () => () => {};
+
+function useMounted() {
+  return useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+}
 
 // SVG Icon for LinkedIn
 const LinkedinIcon = ({ className }: { className?: string }) => (
@@ -51,7 +61,7 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 
 export default function BusinessCardPage() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const [qrUrl, setQrUrl] = useState<string>("");
   const [copiedImage, setCopiedImage] = useState(false);
   const [isCapturing, setIsCapturing] = useState(false);
@@ -60,8 +70,6 @@ export default function BusinessCardPage() {
     process.env.NEXT_PUBLIC_SITE_URL || "https://me.olabsv.com";
 
   useEffect(() => {
-    setMounted(true);
-
     QRCode.toDataURL(targetQrUrl, {
       width: 520,
       margin: 1,
@@ -132,11 +140,11 @@ export default function BusinessCardPage() {
       {/* Floating Action Controls Bar (No Print) */}
       <nav
         aria-label="Controles de exportación e impresión"
-        className="fixed top-5 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 p-1.5 rounded-full bg-[var(--card-bg)]/90 border border-[var(--border)] shadow-2xl backdrop-blur-xl no-print transition-all duration-200"
+        className="fixed top-5 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 p-1.5 rounded-full bg-[var(--card-bg)]/90 border border-[var(--border)] shadow-2xl backdrop-blur-xl no-print transition-transform duration-200"
       >
         <Link
           href="/"
-          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-all active:scale-95"
+          className="min-h-[36px] flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-transform transition-colors duration-150 active:scale-95"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Volver</span>
@@ -149,7 +157,7 @@ export default function BusinessCardPage() {
           onClick={handleCopyImage}
           disabled={isCapturing}
           type="button"
-          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-[var(--foreground)] bg-[var(--surface-hover)] hover:bg-[var(--border)]/40 border border-[var(--border)] transition-all active:scale-95 cursor-pointer disabled:opacity-50"
+          className="min-h-[36px] flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-[var(--foreground)] bg-[var(--surface-hover)] hover:bg-[var(--border)]/40 border border-[var(--border)] transition-transform transition-colors duration-150 active:scale-95 cursor-pointer disabled:opacity-50"
         >
           {copiedImage ? (
             <>
@@ -168,7 +176,7 @@ export default function BusinessCardPage() {
         <button
           onClick={handlePrint}
           type="button"
-          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-[var(--ola-blue)] hover:opacity-90 shadow-sm transition-all active:scale-95 cursor-pointer"
+          className="min-h-[36px] flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-[var(--ola-blue)] hover:opacity-90 shadow-sm transition-transform transition-opacity duration-150 active:scale-95 cursor-pointer"
         >
           <Printer className="w-3.5 h-3.5" />
           <span>Imprimir / PDF</span>
@@ -181,7 +189,7 @@ export default function BusinessCardPage() {
           onClick={toggleTheme}
           type="button"
           aria-label="Alternar tema"
-          className="w-8 h-8 flex items-center justify-center rounded-full text-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-all active:scale-95 cursor-pointer"
+          className="w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center rounded-full text-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-transform transition-colors duration-150 active:scale-95 cursor-pointer"
         >
           {mounted ? (
             theme === "dark" ? (

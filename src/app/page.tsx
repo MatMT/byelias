@@ -14,16 +14,16 @@ export default function HomePage() {
   const [isQrOpen, setIsQrOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col items-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+    <div className="relative min-h-screen w-full flex flex-col items-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-x-clip">
       {/* Enhanced Atmospheric Ambient Glow (OlaStudio Blue Atmosphere) */}
       <div
-        className="pointer-events-none fixed -top-36 left-1/2 -translate-x-1/2 w-[1000px] sm:w-[1200px] h-[600px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#0071e3]/25 via-[#fbfbfd]/40 to-[#fbfbfd] dark:from-[#2997ff]/30 dark:via-[#000000]/60 dark:to-[#000000] blur-[110px] sm:blur-[130px]"
+        className="pointer-events-none absolute -top-36 left-1/2 -translate-x-1/2 w-[1000px] sm:w-[1200px] h-[600px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#0071e3]/25 via-[#fbfbfd]/40 to-[#fbfbfd] dark:from-[#2997ff]/30 dark:via-[#000000]/60 dark:to-[#000000] blur-[90px] sm:blur-[130px] [transform:translateZ(0)] [contain:paint]"
         aria-hidden="true"
       />
 
       {/* Technical Micro-Dots Grid Layer on Full Page Background */}
       <div
-        className="pointer-events-none fixed inset-0 bg-[radial-gradient(#d2d5dc_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#26282e_1px,transparent_1px)] opacity-75"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(#d2d5dc_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#26282e_1px,transparent_1px)] opacity-75 [contain:paint]"
         aria-hidden="true"
       />
 
@@ -33,7 +33,7 @@ export default function HomePage() {
       {/* Main Responsive Grid Container */}
       <main className="relative z-10 w-full max-w-5xl mx-auto flex flex-col lg:grid lg:grid-cols-12 gap-6 items-start">
         {/* Left Column (Profile & Tech Stack): 5 cols on desktop, full width on mobile */}
-        <div className="w-full lg:col-span-5 lg:sticky lg:top-24 bg-white/90 dark:bg-[#16181d]/90 backdrop-blur-md border border-zinc-200/80 dark:border-zinc-800/80 rounded-3xl p-7 sm:p-9 shadow-xl relative overflow-hidden">
+        <div className="w-full lg:col-span-5 lg:sticky lg:top-24 bg-white dark:bg-[#16181d] md:bg-white/90 md:dark:bg-[#16181d]/90 md:backdrop-blur-md border border-zinc-200/80 dark:border-zinc-800/80 rounded-3xl p-7 sm:p-9 shadow-xl relative overflow-hidden">
           {/* Subtle 2px Top Accent Line */}
           <div
             className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--ola-blue)] to-transparent opacity-80"

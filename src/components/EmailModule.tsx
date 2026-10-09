@@ -52,7 +52,7 @@ export const EmailModule: React.FC = () => {
               key={item.id}
               onClick={() => handleCopy(item.email, item.id)}
               type="button"
-              className="group relative flex flex-col justify-between p-3 rounded-2xl apple-card hover:border-[var(--ola-blue)]/50 transition-all duration-200 active:scale-[0.98] min-h-[64px] text-left cursor-pointer"
+              className="group relative flex flex-col justify-between p-3 rounded-2xl apple-card hover:border-[var(--ola-blue)]/50 transition-transform duration-150 active:scale-[0.98] min-h-[64px] text-left cursor-pointer"
               title={`${t.emailModule.clickToCopy}: ${item.email}`}
             >
               <div className="flex items-center justify-between w-full mb-1">

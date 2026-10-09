@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import QRCode from "qrcode";
 import { X, Copy, Check, Download } from "lucide-react";
 import { profileData } from "@/data/profile";
@@ -69,7 +70,7 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-sm rounded-3xl bg-[var(--card-bg)] border border-[var(--border)] p-6 shadow-2xl transition-all duration-200 active:scale-100"
+        className="relative w-full max-w-sm rounded-3xl bg-[var(--card-bg)] border border-[var(--border)] p-6 shadow-2xl transition-transform duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -111,7 +112,7 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
             <button
               onClick={handleCopy}
               type="button"
-              className="flex-1 min-h-[44px] flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[var(--foreground)] bg-[var(--surface-hover)] hover:bg-[var(--border)]/40 border border-[var(--border)] transition-all active:scale-[0.98] cursor-pointer"
+              className="flex-1 min-h-[44px] flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[var(--foreground)] bg-[var(--surface-hover)] hover:bg-[var(--border)]/40 border border-[var(--border)] transition-transform transition-colors duration-150 active:scale-[0.98] cursor-pointer"
             >
               {copied ? (
                 <>
@@ -129,16 +130,16 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
             <button
               onClick={handleDownloadQr}
               type="button"
-              className="flex-1 min-h-[44px] flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-white bg-[var(--ola-blue)] hover:opacity-90 transition-all active:scale-[0.98] cursor-pointer shadow-sm"
+              className="flex-1 min-h-[44px] flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-white bg-[var(--ola-blue)] hover:opacity-90 transition-transform transition-opacity duration-150 active:scale-[0.98] cursor-pointer shadow-sm"
             >
               <Download className="w-4 h-4" />
               <span>{t.actions.downloadQr}</span>
             </button>
           </div>
 
-          <a
+          <Link
             href="/card"
-            className="w-full mt-2.5 min-h-[42px] flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[var(--muted)] hover:text-[var(--foreground)] bg-[var(--surface-hover)] border border-[var(--border)] transition-all active:scale-[0.98]"
+            className="w-full mt-2.5 min-h-[44px] flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[var(--muted)] hover:text-[var(--foreground)] bg-[var(--surface-hover)] border border-[var(--border)] transition-transform transition-colors duration-150 active:scale-[0.98]"
           >
             <svg
               className="w-4 h-4 text-[var(--ola-blue)]"
@@ -153,7 +154,7 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
               <line x1="2" x2="22" y1="10" y2="10" />
             </svg>
             <span>Ver Tarjeta Física para Imprimir (3.5″ × 2″)</span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

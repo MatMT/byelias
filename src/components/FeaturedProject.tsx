@@ -37,7 +37,7 @@ export const FeaturedProject: React.FC = () => {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex flex-col justify-between p-4 rounded-2xl apple-card hover:border-[var(--ola-blue)]/50 transition-all duration-200 active:scale-[0.98] min-h-[96px]"
+              className="group relative flex flex-col justify-between p-4 rounded-2xl apple-card hover:border-[var(--ola-blue)]/50 transition-transform duration-150 active:scale-[0.98] min-h-[96px]"
             >
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex items-center gap-2.5">
@@ -56,7 +56,7 @@ export const FeaturedProject: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="w-7 h-7 rounded-md bg-[var(--surface-hover)] flex items-center justify-center text-[var(--muted)] group-hover:text-[var(--foreground)] transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                <div className="w-7 h-7 rounded-md bg-[var(--surface-hover)] flex items-center justify-center text-[var(--muted)] group-hover:text-[var(--foreground)] transition-transform transition-colors duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </div>
               </div>

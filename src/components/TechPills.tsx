@@ -43,7 +43,7 @@ export const TechPills: React.FC = () => {
           onClick={() => setIsExpanded(!isExpanded)}
           type="button"
           aria-expanded={isExpanded}
-          className="px-2.5 py-1 text-xs font-semibold rounded-lg bg-[var(--surface-hover)] border border-[var(--border)] hover:border-[var(--ola-blue)] hover:text-[var(--ola-blue)] hover:bg-[var(--ola-blue)]/5 text-[var(--muted)] transition-all duration-200 cursor-pointer active:scale-95"
+          className="min-h-[32px] px-2.5 py-1 text-xs font-semibold rounded-lg bg-[var(--surface-hover)] border border-[var(--border)] hover:border-[var(--ola-blue)] hover:text-[var(--ola-blue)] hover:bg-[var(--ola-blue)]/5 text-[var(--muted)] transition-transform transition-colors duration-150 cursor-pointer active:scale-95"
         >
           {isExpanded ? t.actions.lessSkills : t.actions.moreSkills}
         </button>

@@ -32,7 +32,6 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transition: background-color 0.25s ease, color 0.25s ease;
   }
 }
 
@@ -41,17 +40,30 @@
   transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Apple Card Surface with Translucent Glassmorphism */
+/* Apple Card Surface with Translucent Glassmorphism on Desktop, Performant Crisp Surface on Mobile */
 .apple-card {
   background-color: var(--card-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
   box-shadow: var(--apple-shadow);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.2s ease,
-              background-color 0.25s ease;
+              border-color 0.2s ease;
+}
+
+@media (min-width: 769px) {
+  .apple-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+@media (max-width: 768px) {
+  .apple-card {
+    background-color: #ffffff;
+  }
+  .dark .apple-card {
+    background-color: #16181d;
+  }
 }
 
 /* Subtle dot mesh */

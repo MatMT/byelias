@@ -87,7 +87,7 @@ export const LinkStream: React.FC = () => {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between px-3.5 py-2.5 rounded-xl apple-card hover:border-[var(--ola-blue)]/50 transition-all duration-200 active:scale-[0.98] min-h-[46px]"
+              className="group flex items-center justify-between px-3.5 py-2.5 rounded-xl apple-card hover:border-[var(--ola-blue)]/50 transition-transform duration-150 active:scale-[0.98] min-h-[46px]"
             >
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-[var(--surface-hover)] border border-[var(--border)]/60 flex items-center justify-center group-hover:scale-105 transition-transform duration-200 shrink-0">
@@ -110,7 +110,7 @@ export const LinkStream: React.FC = () => {
                 </div>
               </div>
 
-              <div className="w-6 h-6 rounded-md flex items-center justify-center text-[var(--muted)] group-hover:text-[var(--foreground)] transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0 ml-2">
+              <div className="w-6 h-6 rounded-md flex items-center justify-center text-[var(--muted)] group-hover:text-[var(--foreground)] transition-transform transition-colors duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0 ml-2">
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </div>
             </a>
