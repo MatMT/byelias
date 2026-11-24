@@ -77,22 +77,18 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ onOpenQr }) => {
       </p>
 
       {/* Primary Action Buttons Bar */}
-      <div className="flex w-full max-w-sm flex-col gap-3">
-        {/* Save Contact vCard */}
+      <div className="flex w-full flex-col gap-3">
         {/* Primary WhatsApp Action */}
         <a
           href={profileData.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`${t.actions.whatsapp}: ${profileData.whatsappNumber}`}
-          title={`${t.actions.whatsapp}: ${profileData.whatsappNumber}`}
-          className="flex min-h-[52px] items-center justify-center gap-2.5 rounded-xl bg-[#168c4b] px-4 py-3 text-sm font-semibold text-white shadow-sm transition-transform transition-colors duration-200 hover:bg-[#117a40] active:scale-[0.98]"
+          aria-label={t.actions.whatsapp}
+          title={t.actions.whatsapp}
+          className="flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-xl bg-[var(--ola-blue)] px-4 py-3 text-sm font-semibold text-white shadow-sm transition-transform transition-opacity duration-200 hover:opacity-90 active:scale-[0.98]"
         >
           <MessageCircle className="h-4 w-4 shrink-0" />
-          <span className="flex min-w-0 flex-col items-start leading-tight">
-            <span>{t.actions.whatsapp}</span>
-            <span className="text-[11px] font-medium text-white/80">{profileData.whatsappNumber}</span>
-          </span>
+          <span>{t.actions.whatsapp}</span>
         </a>
 
         <div className="flex items-center justify-center gap-3">
@@ -101,9 +97,10 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ onOpenQr }) => {
             type="button"
             aria-label={t.actions.saveContact}
             title={t.actions.saveContact}
-            className="flex h-[52px] w-[52px] items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--surface-hover)] text-[var(--foreground)] transition-transform transition-colors duration-200 hover:border-[var(--ola-blue)]/40 hover:bg-[var(--border)]/40 active:scale-[0.98]"
+            className="flex min-h-[52px] flex-1 items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-hover)] px-4 text-sm font-semibold text-[var(--foreground)] transition-transform transition-colors duration-200 hover:border-[var(--ola-blue)]/40 hover:bg-[var(--border)]/40 active:scale-[0.98]"
           >
             <Download className="h-4 w-4" />
+            <span>{t.actions.saveContact}</span>
           </button>
 
           {/* View QR Code */}
@@ -112,9 +109,10 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ onOpenQr }) => {
             type="button"
             aria-label={t.actions.showQr}
             title={t.actions.showQr}
-            className="flex h-[52px] w-[52px] items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--surface-hover)] text-[var(--foreground)] transition-transform transition-colors duration-200 hover:bg-[var(--border)]/40 active:scale-[0.98] cursor-pointer"
+            className="flex min-h-[52px] flex-1 items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-hover)] px-4 text-sm font-semibold text-[var(--foreground)] transition-transform transition-colors duration-200 hover:bg-[var(--border)]/40 active:scale-[0.98] cursor-pointer"
           >
             <QrCode className="h-4 w-4" />
+            <span>{t.actions.showQr}</span>
           </button>
         </div>
       </div>

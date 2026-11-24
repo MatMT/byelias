@@ -24,9 +24,10 @@ export default function HomePage() {
 
       motion.add("(prefers-reduced-motion: no-preference)", () => {
         gsap.to(dotsRef.current, {
-          x: 8,
-          y: -6,
-          duration: 12,
+          x: 24,
+          y: -16,
+          opacity: 0.95,
+          duration: 10,
           ease: "sine.inOut",
           repeat: -1,
           yoyo: true,
@@ -49,7 +50,7 @@ export default function HomePage() {
       {/* Technical Micro-Dots Grid Layer on Full Page Background */}
       <div
         ref={dotsRef}
-        className="pointer-events-none absolute -inset-4 bg-[radial-gradient(#d2d5dc_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#26282e_1px,transparent_1px)] opacity-75 [contain:paint]"
+        className="pointer-events-none absolute -inset-8 bg-[radial-gradient(#d2d5dc_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#26282e_1px,transparent_1px)] opacity-75 [contain:paint]"
         aria-hidden="true"
       />
 
