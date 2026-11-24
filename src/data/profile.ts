@@ -34,6 +34,8 @@ export interface ProfileData {
   bioEs: string;
   bioEn: string;
   domain: string;
+  whatsappNumber: string;
+  whatsappUrl: string;
   avatarUrl: string;
   github: string;
   projects: ProjectItem[];
@@ -53,6 +55,8 @@ export const profileData: ProfileData = {
   bioEn:
     "Associate Degree in Computer Engineering & Computer Science Engineering Student @ UDB. Building software & tech content. Founder at OlaLabs.",
   domain: "https://olabsv.com",
+  whatsappNumber: "+503 6050 5363",
+  whatsappUrl: "https://wa.me/50360505363",
   avatarUrl: "https://github.com/MatMT.png",
   github: "https://github.com/MatMT",
   projects: [

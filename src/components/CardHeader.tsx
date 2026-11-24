@@ -1,11 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
-import { Download, QrCode } from "lucide-react";
+import { Download, MessageCircle, QrCode } from "lucide-react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import { profileData } from "@/data/profile";
 import { generateAndDownloadVCard } from "@/utils/vcard";
 import { useLanguage } from "@/context/LanguageContext";
+
+gsap.registerPlugin(useGSAP);
 
 interface CardHeaderProps {
   onOpenQr: () => void;
@@ -13,11 +17,31 @@ interface CardHeaderProps {
 
 export const CardHeader: React.FC<CardHeaderProps> = ({ onOpenQr }) => {
   const { t, locale } = useLanguage();
+  const avatarRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const motion = gsap.matchMedia();
+
+      motion.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.to(avatarRef.current, {
+          y: -3,
+          duration: 2.4,
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+      });
+
+      return () => motion.revert();
+    },
+    { scope: avatarRef },
+  );
 
   return (
     <header className="flex flex-col items-center text-center">
       {/* Clean Circular Avatar */}
-      <div className="relative mb-4">
+      <div ref={avatarRef} className="relative mb-4">
         <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-[2px] bg-gradient-to-b from-[var(--border)] to-[var(--card-bg)] shadow-md">
           <div className="relative w-full h-full rounded-full overflow-hidden bg-[var(--card-bg)]">
             <Image
@@ -53,16 +77,32 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ onOpenQr }) => {
       </p>
 
       {/* Primary Action Buttons Bar */}
-      <div className="flex items-center justify-center gap-2.5 w-full max-w-xs">
+      <div className="flex items-center justify-center gap-2 w-full max-w-sm">
         {/* Save Contact vCard */}
         <button
           onClick={generateAndDownloadVCard}
           type="button"
-          className="flex-1 min-h-[44px] flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-[var(--ola-blue)] hover:opacity-90 transition-transform transition-opacity duration-150 active:scale-[0.98] shadow-sm cursor-pointer"
+          className="flex-1 min-w-0 min-h-[44px] flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-semibold text-white bg-[var(--ola-blue)] hover:opacity-90 transition-transform transition-opacity duration-150 active:scale-[0.98] shadow-sm cursor-pointer"
         >
           <Download className="w-4 h-4" />
           <span>{t.actions.saveContact}</span>
         </button>
+
+        {/* Direct WhatsApp Contact */}
+        <a
+          href={profileData.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${t.actions.whatsapp}: ${profileData.whatsappNumber}`}
+          title={`${t.actions.whatsapp}: ${profileData.whatsappNumber}`}
+          className="flex-1 min-w-0 min-h-[44px] flex items-center justify-center gap-2 px-2.5 py-2 rounded-xl text-xs font-semibold text-[var(--foreground)] bg-[var(--surface-hover)] hover:bg-[var(--border)]/40 border border-[var(--border)] transition-transform transition-colors duration-150 active:scale-[0.98]"
+        >
+          <MessageCircle className="w-4 h-4 text-emerald-500 shrink-0" />
+          <span className="flex flex-col items-start leading-tight min-w-0">
+            <span>{t.actions.whatsapp}</span>
+            <span className="text-[9px] font-medium text-[var(--muted)] whitespace-nowrap">{profileData.whatsappNumber}</span>
+          </span>
+        </a>
 
         {/* View QR Code */}
         <button

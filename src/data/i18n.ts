@@ -8,6 +8,7 @@ export interface TranslationDictionary {
   role: string;
   actions: {
     saveContact: string;
+    whatsapp: string;
     showQr: string;
     copyEmail: string;
     copied: string;
@@ -55,6 +56,7 @@ export const translations: Record<Locale, TranslationDictionary> = {
     role: "Lead Software Developer & Tech Builder",
     actions: {
       saveContact: "Guardar Contacto",
+      whatsapp: "WhatsApp",
       showQr: "Código QR",
       copyEmail: "Copiar Email",
       copied: "¡Copiado!",
@@ -100,6 +102,7 @@ export const translations: Record<Locale, TranslationDictionary> = {
     role: "Lead Software Developer & Tech Builder",
     actions: {
       saveContact: "Save Contact",
+      whatsapp: "WhatsApp",
       showQr: "QR Code",
       copyEmail: "Copy Email",
       copied: "Copied!",

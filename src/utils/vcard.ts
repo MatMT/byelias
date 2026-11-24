@@ -9,6 +9,7 @@ export function generateAndDownloadVCard() {
     `NICKNAME:${profileData.handle}`,
     `TITLE:${profileData.title}`,
     `ORG:OlaLabs`,
+    `TEL;TYPE=CELL,VOICE:${profileData.whatsappNumber}`,
     `EMAIL;TYPE=INTERNET,WORK;TYPE=PREF:${profileData.emails[0].email}`,
     `EMAIL;TYPE=INTERNET,HOME:${profileData.emails[1].email}`,
     `URL:${profileData.domain}`,
