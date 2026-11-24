@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
+import React, { useState } from "react";
 import { CardHeader } from "@/components/CardHeader";
 import { FeaturedProject } from "@/components/FeaturedProject";
 import { LinkStream } from "@/components/LinkStream";
@@ -11,33 +9,10 @@ import { TechPills } from "@/components/TechPills";
 import { CardFooter } from "@/components/CardFooter";
 import { QrModal } from "@/components/QrModal";
 import { FloatingNav } from "@/components/FloatingNav";
-
-gsap.registerPlugin(useGSAP);
+import { AmbientDots } from "@/components/AmbientDots";
 
 export default function HomePage() {
   const [isQrOpen, setIsQrOpen] = useState(false);
-  const dotsRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      const motion = gsap.matchMedia();
-
-      motion.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.to(dotsRef.current, {
-          x: 24,
-          y: -16,
-          opacity: 0.95,
-          duration: 10,
-          ease: "sine.inOut",
-          repeat: -1,
-          yoyo: true,
-        });
-      });
-
-      return () => motion.revert();
-    },
-    { scope: dotsRef },
-  );
 
   return (
     <div className="relative min-h-screen w-full flex flex-col items-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-x-clip">
@@ -47,12 +22,8 @@ export default function HomePage() {
         aria-hidden="true"
       />
 
-      {/* Technical Micro-Dots Grid Layer on Full Page Background */}
-      <div
-        ref={dotsRef}
-        className="pointer-events-none absolute -inset-8 bg-[radial-gradient(#d2d5dc_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#26282e_1px,transparent_1px)] opacity-75 [contain:paint]"
-        aria-hidden="true"
-      />
+      {/* Slow, interactive dot field behind the page content */}
+      <AmbientDots />
 
       {/* Floating Navigation Pill (i18n [ES | EN] + Theme Switcher) */}
       <FloatingNav />
