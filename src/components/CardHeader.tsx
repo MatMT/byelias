@@ -77,43 +77,46 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ onOpenQr }) => {
       </p>
 
       {/* Primary Action Buttons Bar */}
-      <div className="flex items-center justify-center gap-2 w-full max-w-sm">
+      <div className="flex w-full max-w-sm flex-col gap-3">
         {/* Save Contact vCard */}
-        <button
-          onClick={generateAndDownloadVCard}
-          type="button"
-          className="flex-1 min-w-0 min-h-[44px] flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-semibold text-white bg-[var(--ola-blue)] hover:opacity-90 transition-transform transition-opacity duration-150 active:scale-[0.98] shadow-sm cursor-pointer"
-        >
-          <Download className="w-4 h-4" />
-          <span>{t.actions.saveContact}</span>
-        </button>
-
-        {/* Direct WhatsApp Contact */}
+        {/* Primary WhatsApp Action */}
         <a
           href={profileData.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${t.actions.whatsapp}: ${profileData.whatsappNumber}`}
           title={`${t.actions.whatsapp}: ${profileData.whatsappNumber}`}
-          className="flex-1 min-w-0 min-h-[44px] flex items-center justify-center gap-2 px-2.5 py-2 rounded-xl text-xs font-semibold text-[var(--foreground)] bg-[var(--surface-hover)] hover:bg-[var(--border)]/40 border border-[var(--border)] transition-transform transition-colors duration-150 active:scale-[0.98]"
+          className="flex min-h-[52px] items-center justify-center gap-2.5 rounded-xl bg-[#168c4b] px-4 py-3 text-sm font-semibold text-white shadow-sm transition-transform transition-colors duration-200 hover:bg-[#117a40] active:scale-[0.98]"
         >
-          <MessageCircle className="w-4 h-4 text-emerald-500 shrink-0" />
-          <span className="flex flex-col items-start leading-tight min-w-0">
+          <MessageCircle className="h-4 w-4 shrink-0" />
+          <span className="flex min-w-0 flex-col items-start leading-tight">
             <span>{t.actions.whatsapp}</span>
-            <span className="text-[9px] font-medium text-[var(--muted)] whitespace-nowrap">{profileData.whatsappNumber}</span>
+            <span className="text-[11px] font-medium text-white/80">{profileData.whatsappNumber}</span>
           </span>
         </a>
 
-        {/* View QR Code */}
-        <button
-          onClick={onOpenQr}
-          type="button"
-          aria-label={t.actions.showQr}
-          title={t.actions.showQr}
-          className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2.5 rounded-xl text-xs font-medium text-[var(--foreground)] bg-[var(--surface-hover)] hover:bg-[var(--border)]/40 border border-[var(--border)] transition-transform transition-colors duration-150 active:scale-[0.98] cursor-pointer"
-        >
-          <QrCode className="w-4 h-4" />
-        </button>
+        <div className="flex items-center justify-center gap-3">
+          <button
+            onClick={generateAndDownloadVCard}
+            type="button"
+            aria-label={t.actions.saveContact}
+            title={t.actions.saveContact}
+            className="flex h-[52px] w-[52px] items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--surface-hover)] text-[var(--foreground)] transition-transform transition-colors duration-200 hover:border-[var(--ola-blue)]/40 hover:bg-[var(--border)]/40 active:scale-[0.98]"
+          >
+            <Download className="h-4 w-4" />
+          </button>
+
+          {/* View QR Code */}
+          <button
+            onClick={onOpenQr}
+            type="button"
+            aria-label={t.actions.showQr}
+            title={t.actions.showQr}
+            className="flex h-[52px] w-[52px] items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--surface-hover)] text-[var(--foreground)] transition-transform transition-colors duration-200 hover:bg-[var(--border)]/40 active:scale-[0.98] cursor-pointer"
+          >
+            <QrCode className="h-4 w-4" />
+          </button>
+        </div>
       </div>
     </header>
   );

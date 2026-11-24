@@ -232,7 +232,7 @@ export default function BusinessCardPage() {
           {/* ===================================================================== */}
           {/* LEFT SIDE (58%): Identity, Hierarchy, Academic, Bio & 2-Row Stack     */}
           {/* ===================================================================== */}
-          <div className="relative z-10 flex flex-col justify-between h-full w-[58%] pr-6 sm:pr-8 text-left [zoom:1.08]">
+          <div className="relative z-10 flex h-full w-[58%] flex-col justify-between pr-6 pb-2 text-left sm:pr-8 sm:pb-3">
             {/* Header: Prominent Avatar (w-24/w-28) + Two-line Full Name + Handle Badge */}
             <div className="flex items-center gap-4 sm:gap-5">
               <div className="relative w-24 h-24 sm:w-34 sm:h-34 rounded-2xl overflow-hidden p-[2px] bg-gradient-to-b from-zinc-200 to-zinc-100 dark:from-zinc-700 dark:to-zinc-800 shadow-md border-2 border-zinc-200/80 dark:border-zinc-700/80 shrink-0">
@@ -291,7 +291,7 @@ export default function BusinessCardPage() {
             </p>
 
             {/* Technical Skills: Strictly 2 Balanced Rows */}
-            <div className="flex flex-col gap-1.5 mt-auto pt-3">
+            <div className="mt-auto flex flex-col gap-1.5 pt-4 pb-4">
               {/* Row 1: Core Stack */}
               <div className="flex flex-nowrap items-center gap-1.5">
                 {["TypeScript", "Next.js / React", "IA", "Architecture"].map((skill) => (

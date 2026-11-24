@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import { CardHeader } from "@/components/CardHeader";
 import { FeaturedProject } from "@/components/FeaturedProject";
 import { LinkStream } from "@/components/LinkStream";
@@ -10,8 +12,31 @@ import { CardFooter } from "@/components/CardFooter";
 import { QrModal } from "@/components/QrModal";
 import { FloatingNav } from "@/components/FloatingNav";
 
+gsap.registerPlugin(useGSAP);
+
 export default function HomePage() {
   const [isQrOpen, setIsQrOpen] = useState(false);
+  const dotsRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const motion = gsap.matchMedia();
+
+      motion.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.to(dotsRef.current, {
+          x: 8,
+          y: -6,
+          duration: 12,
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+      });
+
+      return () => motion.revert();
+    },
+    { scope: dotsRef },
+  );
 
   return (
     <div className="relative min-h-screen w-full flex flex-col items-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-x-clip">
@@ -23,7 +48,8 @@ export default function HomePage() {
 
       {/* Technical Micro-Dots Grid Layer on Full Page Background */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(#d2d5dc_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#26282e_1px,transparent_1px)] opacity-75 [contain:paint]"
+        ref={dotsRef}
+        className="pointer-events-none absolute -inset-4 bg-[radial-gradient(#d2d5dc_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#26282e_1px,transparent_1px)] opacity-75 [contain:paint]"
         aria-hidden="true"
       />
 
